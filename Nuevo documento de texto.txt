@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inmobiliaria MM Floripa</title>
+<style>
+  /* Reset y básicos */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Sin scroll vertical */
+  }
+
+  /* Slider full screen */
+  .slider {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 1s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    padding: 30px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  }
+  .slide.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  /* Botón detalles */
+  .btn-detalle {
+    align-self: flex-start;
+    background: coral;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s;
+  }
+  .btn-detalle:hover {
+    background: darkorange;
+  }
+
+  /* Flechas */
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2;
+    user-select: none;
+    transition: background-color 0.3s;
+  }
+  .slider-arrow:hover {
+    background-color: rgba(0,0,0,0.3);
+  }
+  .arrow-left { left: 15px; }
+  .arrow-right { right: 15px; }
+
+  /* Puntos de navegación */
+  .slider-nav {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+  }
+  .slider-nav span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: rgba(255,255,255,0.6);
+    margin: 0 6px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .slider-nav span.active {
+    background: coral;
+  }
+
+  /* Modal fondo */
+  .modal-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    padding: 20px;
+  }
+  .modal-bg.active {
+    display: flex;
+  }
+
+  /* Modal contenido */
+  .modal-content {
+    background: #fff;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+  }
+  .modal-close:hover {
+    color: coral;
+  }
+
+  /* Modal imágenes extra */
+  .modal-images {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+  .modal-images img {
+    width: calc(33.333% - 10px);
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  /* Modal texto */
+  .modal-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #222;
+  }
+  .modal-description {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.4;
+  }
+
+  /*Logo de inmoniliaria*/
+  .logo-slider {
+  position: absolute;
+  top: 135px;
+  left: 33%;
+  transform: translateX(0%);
+  width: 400px; /* tamaño pequeño */
+  height: auto;
+  opacity: 0.5; /* un poco transparente */
+  z-index: 0;
+}
+</style>
+</head>
+<body>
+
+<div class="slider" id="slider">
+  <div class="slide active" style="background-image:url('Aluguel 01 Estrela Verde Ap 203/Aluguel 01 Estrela Verde Ap 20301.jpg');" data-index="0">
+    <img src="Logo MM blanco con sombra.png" alt="Logo" class="logo-slider">
+    <h2>Departamento de Alta Gama</h2>
+    <button class="btn-detalle" data-modal="modal-01">Ver más detalles</button>
+  </div>
+  <div class="slide" style="background-image:url('Casa02/Casa0201.jpg');" data-index="1">
+    <img src="Logo MM blanco con sombra.png" alt="Logo" class="logo-slider">
+    <h2>Casa con Jardín Amplio</h2>
+    <button class="btn-detalle" data-modal="modal-02">Ver más detalles</button>
+  </div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1920&q=80');" data-index="2">
+    <img src="Logo MM blanco con sombra.png" alt="Logo" class="logo-slider">
+    <h2>Moderno Loft en Ciudad</h2>
+    <button class="btn-detalle" data-modal="modal-03">Ver más detalles</button>
+  </div>
+
+  <div class="slider-arrow arrow-left" id="prev">&#10094;</div>
+  <div class="slider-arrow arrow-right" id="next">&#10095;</div>
+
+  <div class="slider-nav" id="dots"></div>
+</div>
+
+<!-- MODALES -->
+<div class="modal-bg" id="modal-01">
+  <div class="modal-content">
+    <span class="modal-close" data-close="modal-01">&times;</span>
+    <h3 class="modal-title">Departamento de Alta Gama</h3>
+    <p class="modal-description">
+      Hermoso departamento frente al mar con 2 habitaciones, balcón con vista panorámica, piscina y acceso directo a la playa.  
+      Ubicado en zona exclusiva, ideal para vacaciones o residencia permanente.  
+      Precio: $250.000 / mes.
+    </p>
+    <div class="modal-images">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20302.jpg" alt="Dep Mar 1">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20303.jpg" alt="Dep Mar 2">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20304.jpg" alt="Dep Mar 3">
+      <img src="Aluguel 01 Estrela Verde Ap 203/Aluguel 01 Estrela Verde Ap 20305.jpg" alt="Dep Mar 4">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20306.jpg" alt="Dep Mar 1">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20307.jpg" alt="Dep Mar 2">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20308.jpg" alt="Dep Mar 3">
+      <img src="Aluguel 01 Estrela Verde Ap 203/Aluguel 01 Estrela Verde Ap 20309.jpg" alt="Dep Mar 4">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20310.jpg" alt="Dep Mar 1">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20311.jpg" alt="Dep Mar 2">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20312.jpg" alt="Dep Mar 3">
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-02">
+  <div class="modal-content">
+    <span class="modal-close" data-close="modal-02">&times;</span>
+    <h3 class="modal-title">Casa con Jardín Amplio</h3>
+    <div class="modal-images">
+      <img src="Casa02/Casa0202.jpg" alt="Casa Jardín 1">
+      <img src="Casa02/Casa0203.jpg" alt="Casa Jardín 2">
+      <img src="Casa02/Casa0203.mp4" alt="Casa Jardín 3" type="video/mp4">
+    </div>
+    <p class="modal-description">
+      Amplia casa con jardín privado, 3 habitaciones, cocina equipada y garaje para dos autos.  
+      Perfecta para familias que buscan tranquilidad y espacio.  
+      Precio: $350.000 / mes.
+    </p>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-03">
+  <div class="modal-content">
+    <span class="modal-close" data-close="modal-03">&times;</span>
+    <h3 class="modal-title">Moderno Loft en Ciudad</h3>
+    <div class="modal-images">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" alt="Loft 1">
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Loft 2">
+      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt="Loft 3">
+    </div>
+    <p class="modal-description">
+      Loft amueblado con diseño moderno, ubicado en el centro de la ciudad, cercano a transporte y comercios.  
+      Cuenta con 1 habitación, cocina americana y balcón.  
+      Precio: $200.000 / mes.
+    </p>
+  </div>
+</div>
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('dots');
+  const nextBtn = document.getElementById('next');
+  const prevBtn = document.getElementById('prev');
+  let autoplay = true;
+  let slideInterval;
+
+  // Crear puntos de navegación
+  slides.forEach((_, i) => {
+    let dot = document.createElement('span');
+    dot.addEventListener('click', () => {
+      showSlide(i);
+      stopAutoplay();
+    });
+    dotsContainer.appendChild(dot);
+  });
+  const dots = document.querySelectorAll('#dots span');
+
+  function showSlide(index) {
+    slides[currentIndex].classList.remove('active');
+    dots[currentIndex].classList.remove('active');
+    currentIndex = index;
+    slides[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+  }
+
+  function nextSlide() {
+    let index = (currentIndex + 1) % slides.length;
+    showSlide(index);
+  }
+  function prevSlide() {
+    let index = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(index);
+  }
+
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    stopAutoplay();
+  });
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    stopAutoplay();
+  });
+
+  function startAutoplay() {
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+  function stopAutoplay() {
+    autoplay = false;
+    clearInterval(slideInterval);
+  }
+
+  // Inicializar slider
+  showSlide(0);
+  if (autoplay) startAutoplay();
+
+  // Modal logic
+  const modalButtons = document.querySelectorAll('.btn-detalle');
+  const modals = document.querySelectorAll('.modal-bg');
+  const closeButtons = document.querySelectorAll('.modal-close');
+
+  modalButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modalId = btn.getAttribute('data-modal');
+      document.getElementById(modalId).classList.add('active');
+      stopAutoplay();
+    });
+  });
+
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const modalId = btn.getAttribute('data-close');
+      document.getElementById(modalId).classList.remove('active');
+      // Opcional: si querés que vuelva el autoplay al cerrar modal
+      // if (!autoplay) {
+      //   autoplay = true;
+      //   startAutoplay();
+      // }
+    });
+  });
+
+  // Cerrar modal al hacer click fuera del contenido
+  modals.forEach(modal => {
+    modal.addEventListener('click', e => {
+      if(e.target === modal) {
+        modal.classList.remove('active');
+        // if (!autoplay) {
+        //   autoplay = true;
+        //   startAutoplay();
+        // }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

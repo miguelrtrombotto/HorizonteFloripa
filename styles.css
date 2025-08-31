@@ -1,0 +1,342 @@
+/* --- ESTILOS GENERALES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background: #222;
+}
+
+.slider {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #222;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  padding: 30px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.slider,
+.slide {
+  height: 100vh;
+  height: 100svh;
+  /* Alto real visible en móviles modernos */
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* --- LOGO CENTRADO CON FONDO BLANCO TRANSPARENTE --- */
+.logo-slider {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30vw;
+  max-width: 350px;
+  min-width: 120px;
+  height: auto;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 2vw;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+  display: block;
+}
+
+/* --- TITULO DEL SLIDE --- */
+.slide h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  width: fit-content;
+  max-width: 90vw;
+  z-index: 2;
+}
+
+/* --- BOTÓN DETALLE SIEMPRE ABAJO IZQUIERDA --- */
+.btn-detalle {
+  position: absolute;
+  left: 4%;
+  bottom: 4%;
+  background: coral;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+  z-index: 2;
+}
+
+/* --- TITULO DE SLIDER DE FONDO --- */
+.slider__titulo {
+  position: absolute;
+  left: 4%;
+  bottom: 10%;
+  /*background: coral;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+  z-index: 2;*/
+}
+
+.btn-detalle:hover {
+  background: darkorange;
+}
+
+/* --- FLECHAS DEL CARRUSEL --- */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2;
+  user-select: none;
+  transition: background-color 0.3s;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.slider-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.arrow-left {
+  left: 15px;
+}
+
+.arrow-right {
+  right: 15px;
+}
+
+/* --- NAVEGACIÓN DEL SLIDER --- */
+.slider-nav {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+.slider-nav span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.6);
+  margin: 0 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider-nav span.active {
+  background: coral;
+}
+
+/* --- MODAL --- */
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  padding: 10px;
+}
+
+.modal-bg.active {
+  display: flex;
+}
+
+.modal-content {
+  background:lightgray;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  gap: 0px;
+}
+
+.modal-mapa {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+  z-index: 2;
+}
+
+.modal-close:hover {
+  color: coral;
+}
+
+.modal-images {
+  display: flex;
+  background-color: beige;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.modal-images img {
+  width: calc(33.333% - 10px);
+  border-radius: 6px;
+  object-fit: cover;
+  background: #eee;
+}
+
+
+.modal-title {
+  background-color: rgb(172, 161, 161);
+  color: #fff;
+  padding: 4px 6px;
+  display: block;
+  font-size: 1.8rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #222;
+  border-radius: 6px;
+}
+
+.modal-description {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .modal-content {
+    max-width: 98vw;
+    padding: 10px;
+  }
+
+  .modal-images img {
+    width: calc(50% - 10px);
+  }
+
+  .logo-slider {
+    width: 40vw;
+    max-width: 220px;
+    min-width: 90px;
+    padding: 3vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .slide {
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  .logo-slider {
+    width: 60vw;
+    max-width: 180px;
+    min-width: 70px;
+    padding: 4vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modal-content {
+    max-width: 100vw;
+    padding: 4px;
+  }
+
+  .modal-images img {
+    width: 100%;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .slider-arrow {
+    font-size: 28px;
+    padding: 2px;
+  }
+
+  .btn-detalle {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    left: 4%;
+    bottom: 8%;
+  }
+
+  .slide h2 {
+    font-size: 1.1rem;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-height: 400px) {
+  .btn-detalle {
+    bottom: 4%;
+  }
+}
