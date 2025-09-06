@@ -182,12 +182,12 @@
 <body>
 
 <div class="slider" id="slider">
-  <div class="slide active" style="background-image:url('Aluguel 01 Estrela Verde Ap 203/Aluguel 01 Estrela Verde Ap 20301.jpg');" data-index="0">
+  <div class="slide active" style="background-image:url('Aluguel 01 Estrela Verde Ap 203/webp/Aluguel 01 Estrela Verde Ap 20301.webp');" data-index="0">
     <img src="Logo MM blanco con sombra.png" alt="Logo" class="logo-slider">
     <h2>Departamento de Alta Gama</h2>
     <button class="btn-detalle" data-modal="modal-01">Ver más detalles</button>
   </div>
-  <div class="slide" style="background-image:url('Casa02/Casa0201.jpg');" data-index="1">
+  <div class="slide" style="background-image:url('Casa02/Casa0201.webp');" data-index="1">
     <img src="Logo MM blanco con sombra.png" alt="Logo" class="logo-slider">
     <h2>Casa con Jardín Amplio</h2>
     <button class="btn-detalle" data-modal="modal-02">Ver más detalles</button>
@@ -215,17 +215,17 @@
       Precio: $250.000 / mes.
     </p>
     <div class="modal-images">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20302.jpg" alt="Dep Mar 1">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20303.jpg" alt="Dep Mar 2">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20304.jpg" alt="Dep Mar 3">
-      <img src="Aluguel 01 Estrela Verde Ap 203/Aluguel 01 Estrela Verde Ap 20305.jpg" alt="Dep Mar 4">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20306.jpg" alt="Dep Mar 1">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20307.jpg" alt="Dep Mar 2">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20308.jpg" alt="Dep Mar 3">
-      <img src="Aluguel 01 Estrela Verde Ap 203/Aluguel 01 Estrela Verde Ap 20309.jpg" alt="Dep Mar 4">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20310.jpg" alt="Dep Mar 1">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20311.jpg" alt="Dep Mar 2">
-      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20312.jpg" alt="Dep Mar 3">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20302.webp" alt="Dep Mar 1">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20303.webp" alt="Dep Mar 2">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20304.webp" alt="Dep Mar 3">
+      <img src="Aluguel 01 Estrela Verde Ap 203/webp/Aluguel 01 Estrela Verde Ap 20305.webp" alt="Dep Mar 4">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20306.webp" alt="Dep Mar 1">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20307.webp" alt="Dep Mar 2">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20308.webp" alt="Dep Mar 3">
+      <img src="Aluguel 01 Estrela Verde Ap 203/webp/Aluguel 01 Estrela Verde Ap 20309.webp" alt="Dep Mar 4">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20310.webp" alt="Dep Mar 1">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20311.webp" alt="Dep Mar 2">
+      <img src="Aluguel 01 Estrela Verde Ap 203\Aluguel 01 Estrela Verde Ap 20312.webp" alt="Dep Mar 3">
     </div>
   </div>
 </div>
@@ -235,8 +235,8 @@
     <span class="modal-close" data-close="modal-02">&times;</span>
     <h3 class="modal-title">Casa con Jardín Amplio</h3>
     <div class="modal-images">
-      <img src="Casa02/Casa0202.jpg" alt="Casa Jardín 1">
-      <img src="Casa02/Casa0203.jpg" alt="Casa Jardín 2">
+      <img src="Casa02/Casa0202.webp" alt="Casa Jardín 1">
+      <img src="Casa02/Casa0203.webp" alt="Casa Jardín 2">
       <img src="Casa02/Casa0203.mp4" alt="Casa Jardín 3" type="video/mp4">
     </div>
     <p class="modal-description">
